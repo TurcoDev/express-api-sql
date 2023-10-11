@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EJS</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <main>
+    <div class="">
+      <h2>Cientes</h2>
+      <ul>
+        <% clients.forEach(function(client) { %>
+          <li>
+            <img src="<%= client.imgURL %>" alt="">
+            <div class="text">
+              <p>Nombre: <%= client.nameClient %> </p>
+              <p>Apellido: <%= client.lastnameClient %>   </p>
+            </div>
+          </li>
+          <% }); %>
+      </ul>
+    </div>
+  </main>
+</body>
+</html>

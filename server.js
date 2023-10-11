@@ -2,15 +2,21 @@ const express = require('express');
 const app = express();
 const cors = require("cors");
 const Client = require("./app/models/client.model.js");
-
-
-
-const port = 3000;
-
+const path = require('path');
 
 var corsOptions = {
   origin: "http://localhost:8081"
 };
+
+const port = 3000;
+
+app.set('view engine', 'ejs');
+
+app.set('views', path.join(__dirname, 'views'))
+
+app.use('/', express.static(path.join(__dirname, 'public')));
+// __dirname + 'public'
+
 
 app.use(cors(corsOptions));
 
@@ -61,6 +67,10 @@ app.get('/', (req, res) => {
        */
     });
 })
+
+// app.get('/test', (req, res) => {
+//   res.sendFile('index.html');
+// })
 
 require("./app/routes/client.routes.js")(app);
 

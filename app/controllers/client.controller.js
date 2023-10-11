@@ -26,3 +26,19 @@ exports.create = (req, res) => {
     else res.send(data);
   });
 };
+
+// Retrieve all Client from the database (with condition).
+exports.findAll = (req, res) => {
+  const title = req.query.title;
+
+  Client.getAll(title, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
+      });
+    else res.render('pages/index', {
+      clients: data
+    });
+  });
+};

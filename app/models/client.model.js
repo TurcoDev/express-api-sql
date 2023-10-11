@@ -20,4 +20,25 @@ Client.create = (newClient, result) => {
   });
 };
 
+
+Client.getAll = (title, result) => {
+  let query = "SELECT * FROM clients";
+
+  if (title) {
+    query += ` WHERE title LIKE '%${title}%'`;
+  }
+
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("clients: ", res);
+    result(null, res);
+  });
+};
+
+
 module.exports = Client;
