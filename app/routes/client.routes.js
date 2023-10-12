@@ -8,5 +8,7 @@ module.exports = app => {
 
   router.get("/list_client", clients.findAll);
 
+  router.get("/set_client", clients.setClient);
+
   app.use('/api/clients', router);
 };

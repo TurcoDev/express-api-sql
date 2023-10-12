@@ -1,4 +1,5 @@
 const Client = require("../models/client.model.js");
+const path = require('path');
 
 // Create and Save a new Client
 exports.create = (req, res) => {
@@ -41,4 +42,10 @@ exports.findAll = (req, res) => {
       clients: data
     });
   });
+};
+
+
+
+exports.setClient = (req, res) => {
+  res.sendFile(path.resolve('public/form.html'));
 };
